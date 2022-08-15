@@ -9,7 +9,7 @@ layout = [[sg.Text('Enter an event:')],
           [sg.Button('Add'), sg.Button('Exit')], 
           [sg.Listbox([], size=(15,13), key ='-OUTPUT-')]]
 
-window = sg.Window('Pattern 2B', layout)
+window = sg.Window('Day Planner', layout)
 
 while True:  # Event Loop
     event, values = window.read()
