@@ -7,7 +7,8 @@ sg.theme('DarkTanBlue')
 layout = [[sg.Text('Enter an event:')],
           [sg.Input(key='-IN-', do_not_clear=False)],
           [sg.Button('Add'), sg.Button('Exit')], 
-          [sg.Listbox([], size=(15,13), key ='-OUTPUT-')]]
+          [sg.Listbox([], size=(15,13), key ='-LIST-')],
+          [sg.Button('Delete'), sg.Button('Edit')]]
 
 window = sg.Window('Day Planner', layout)
 
@@ -20,7 +21,12 @@ while True:  # Event Loop
         # Update the "output" text element to be the value of "input" element
         occurence = "".join(values['-IN-'])
         day_list = li.make_list(occurence)
-        window['-OUTPUT-'].update(day_list)
+        window['-LIST-'].update(day_list)
+    if event == 'Delete':
+      if values['-LIST-']:
+        day_list = li.deleted(values['-LIST-'][0], day_list)
+        window['-LIST-'].update(day_list)
+    
 
 
 window.close()
