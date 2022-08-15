@@ -3,10 +3,11 @@ import make_list as li
 
 sg.theme('DarkTanBlue')
 
+
 layout = [[sg.Text('Enter an event:')],
           [sg.Input(key='-IN-', do_not_clear=False)],
           [sg.Button('Add'), sg.Button('Exit')], 
-          [sg.Text(size=(15,1), key='-OUTPUT-')]]
+          [sg.Listbox([], size=(15,13), key ='-OUTPUT-')]]
 
 window = sg.Window('Pattern 2B', layout)
 
@@ -20,5 +21,6 @@ while True:  # Event Loop
         occurence = "".join(values['-IN-'])
         day_list = li.make_list(occurence)
         window['-OUTPUT-'].update(day_list)
+
 
 window.close()
