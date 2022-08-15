@@ -4,7 +4,7 @@ import make_list as li
 sg.theme('DarkTanBlue')
 
 
-layout = [[sg.Text('Enter an event:')],
+layout = [[sg.Text('Enter or edit an event:')],
           [sg.Input(key='-IN-', do_not_clear=False)],
           [sg.Button('Add'), sg.Button('Exit')], 
           [sg.Listbox([], size=(15,13), key ='-LIST-')],
@@ -25,6 +25,10 @@ while True:  # Event Loop
     if event == 'Delete':
       if values['-LIST-']:
         day_list = li.deleted(values['-LIST-'][0], day_list)
+        window['-LIST-'].update(day_list)
+    if event == 'Edit':
+      if values['-LIST-']:
+        day_list = li.edit(values['-LIST-'][0],values['-IN-'], day_list)
         window['-LIST-'].update(day_list)
     
 
